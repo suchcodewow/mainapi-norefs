@@ -39,6 +39,16 @@ class Features:
     transaction_service = False
 
 features = Features()
+@app.route("/", methods=["GET"])
+def healthcheck():
+    return response(
+        {
+            "status": "OK",
+            "version": "Python_3.13",
+            "database": "Ready!"
+        },
+        200,
+    )
 @app.route("/api/features", methods=["GET"])
 def api_features():
     global features
